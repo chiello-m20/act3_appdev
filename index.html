@@ -96,39 +96,42 @@
         </div>
     </div>
 
-    <!-- JavaScript should be inside a <script> tag -->
+
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch("subjects.json")
-                .then(response => {
-                    console.log("Response status:", response.status);
-                    if (!response.ok) throw new Error("Failed to fetch");
-                    return response.json();
-                })
-                .then(data => {
-                    console.log("Fetched data:", data);
-                    let subjectsDiv = document.getElementById("subjects-list");
-                    subjectsDiv.innerHTML = ""; // Clear loading text
-        
-                    for (const [year, subjects] of Object.entries(data.subjects)) {
-                        let yearHeading = document.createElement("h3");
-                        yearHeading.textContent = year;
-                        subjectsDiv.appendChild(yearHeading);
-        
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("subjects.json")
+            .then(response => response.json())
+            .then(data => {
+                console.log("Fetched data:", data);
+                let subjectsDiv = document.getElementById("subjects-list");
+                subjectsDiv.innerHTML = ""; // Clear loading text
+    
+                for (const [year, semesters] of Object.entries(data.subjects)) {
+                    let yearHeading = document.createElement("h3");
+                    yearHeading.textContent = year;
+                    subjectsDiv.appendChild(yearHeading);
+    
+                    for (const [semester, subjects] of Object.entries(semesters)) {
+                        let semesterHeading = document.createElement("h4");
+                        semesterHeading.textContent = semester;
+                        subjectsDiv.appendChild(semesterHeading);
+    
                         let ul = document.createElement("ul");
-                        subjects.forEach(subject => {
+                        subjects.forEach(subject => {  // ✅ Now correctly accessing subjects array
                             let li = document.createElement("li");
                             li.textContent = subject;
                             ul.appendChild(li);
                         });
                         subjectsDiv.appendChild(ul);
                     }
-                })
-                .catch(error => {
-                    document.getElementById("subjects-list").innerHTML = "<p>Failed to load subjects.</p>";
-                    console.error("Error fetching subjects:", error);
-                });
-        });
+                }
+            })
+            .catch(error => {
+                document.getElementById("subjects-list").innerHTML = "<p>Failed to load subjects.</p>";
+                console.error("Error fetching subjects:", error);
+            });
+    });
+
     </script>
 
 </body>
