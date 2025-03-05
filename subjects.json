@@ -1,0 +1,65 @@
+{
+    "subjects": {
+        "First Year": {
+            "1st Semester": [
+                "Introduction to Computing",
+                "Computer Programming 1",
+                "Purposive Communication",
+                "Readings in Philippine History",
+                "The Contemporary World",
+                "Mathematics in the Modern World",
+                "Movement Enhancement",
+                "CWTS I"
+            ],
+            "2nd Semester": [
+                "Computer Programming 2",
+                "Data Structures and Algorithms",
+                "Discrete Mathematics",
+                "Art Appreciation",
+                "Understanding the Self",
+                "Fitness Activity and Exercises",
+                "CWTS II",
+                "Science, Technology and Society"
+            ]
+        },
+        "Second Year": {
+            "1st Semester": [
+                "Intro to Human-Computer Interaction",
+                "Fundamentals of Database Systems",
+                "Platform Technologies",
+                "Object-Oriented Programming",
+                "Accounting Principles",
+                "Physical Activity Towards Health and Fitness 1",
+                "Environmental Science"
+            ],
+            "2nd Semester": [
+                "Information Management",
+                "Networking 1",
+                "Web Systems and Technologies",
+                "Systems Integration and Architecture",
+                "Ethics",
+                "Life and Works of Rizal",
+                "Physical Activity Towards Health and Fitness 2"
+            ]
+        },
+        "Third Year": {
+            "1st Semester": [
+                "Information Assurance and Security",
+                "Networking 2",
+                "Mobile Programming",
+                "Software Engineering",
+                "IT Elective 1",
+                "Technopreneurship"
+            ],
+            "2nd Semester (Current)": [
+                "CAPSTONE Project and Research 1",
+                "Integrative Programming and Technologies",
+                "Applications Development and Emerging Technologies",
+                "Quantitative Methods",
+                "IT Elective 2",
+                "Philippine Indigenous Communities and Peace Education",
+                "Foreign Language"
+            ]
+        }
+    }
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #006d65;
+            overflow: hidden;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: inline-block;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            background-color: #004d46;
+            transition: 0.3s;
+        }
+
+        .section {
+            width: 60%;
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .section h2 {
+            margin-top: 0;
+            font-size: 22px;
+            border-bottom: 2px solid #006d65;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div id="about" class="section">
+        <h2>About</h2>
+        <p>Hello! My name is Chiell G. Mabano.</p>
+    </div>
+
+    <div id="education" class="section">
+        <h2>Education</h2>
+        <p>I am currently studying at University of Science and Technology of Southern Philippines.</p>
+    </div>
+
+    <div id="skills" class="section">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+        </ul>
+    </div>
+
+    <div id="portfolio" class="section">
+        <h2>Portfolio</h2>
+        <p>Work and Projects:</p>
+    </div>
+
+    <div id="contact" class="section">
+        <h2>Contact</h2>
+        <p>Email Address: mabano.chiello@gmail.com</p>
+        <p>Contact No.: 0912 345 6789</p>
+    </div>
+
+    <div id="subjects" class="section">
+        <h2>Subjects Taken</h2>
+        <div id="subjects-list">
+            <p>Loading subjects...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript should be inside a <script> tag -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("subjects.json")
+                .then(response => {
+                    console.log("Response status:", response.status);
+                    if (!response.ok) throw new Error("Failed to fetch");
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Fetched data:", data);
+                    let subjectsDiv = document.getElementById("subjects-list");
+                    subjectsDiv.innerHTML = ""; // Clear loading text
+        
+                    for (const [year, subjects] of Object.entries(data.subjects)) {
+                        let yearHeading = document.createElement("h3");
+                        yearHeading.textContent = year;
+                        subjectsDiv.appendChild(yearHeading);
+        
+                        let ul = document.createElement("ul");
+                        subjects.forEach(subject => {
+                            let li = document.createElement("li");
+                            li.textContent = subject;
+                            ul.appendChild(li);
+                        });
+                        subjectsDiv.appendChild(ul);
+                    }
+                })
+                .catch(error => {
+                    document.getElementById("subjects-list").innerHTML = "<p>Failed to load subjects.</p>";
+                    console.error("Error fetching subjects:", error);
+                });
+        });
+    </script>
+
+</body>
+</html>
+
